@@ -256,7 +256,7 @@ export class ConfigService {
     this.env.PRODUCTION = process.env?.NODE_ENV === 'PROD';
     if (process.env?.DOCKER_ENV === 'true') {
       this.env.SERVER.TYPE = process.env.SERVER_TYPE as 'http' | 'http';
-      this.env.SERVER.PORT = Number.parseInt(process.env.SERVER_PORT) || 8080;
+      this.env.SERVER.PORT = Number.parseInt(process.env.SERVER_PORT);
     }
   }
 
@@ -268,7 +268,7 @@ export class ConfigService {
     return {
       SERVER: {
         TYPE: (process.env.SERVER_TYPE as 'http' | 'https') || 'http',
-        PORT: Number.parseInt(process.env.SERVER_PORT) || 8080,
+        PORT: Number.parseInt(process.env.SERVER_PORT),
         URL: process.env.SERVER_URL,
         DISABLE_DOCS: process.env?.SERVER_DISABLE_DOCS === 'true',
         DISABLE_MANAGER: process.env?.SERVER_DISABLE_MANAGER === 'true',
